@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRP-ej-5vC" userLabel="FakeNavbarView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="X6F-hQ-zoO"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHQ-Q5-EG4">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie_db" translatesAutoresizingMaskIntoConstraints="NO" id="ABe-cI-PVD">
+                                        <rect key="frame" x="91" y="187" width="232" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="Dc6-Xt-Vcy"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ABe-cI-PVD" firstAttribute="centerX" secondItem="DHQ-Q5-EG4" secondAttribute="centerX" id="60x-xT-hDJ"/>
+                                    <constraint firstItem="ABe-cI-PVD" firstAttribute="width" secondItem="DHQ-Q5-EG4" secondAttribute="height" multiplier="0.3" id="A9p-im-HiN"/>
+                                    <constraint firstItem="ABe-cI-PVD" firstAttribute="centerY" secondItem="DHQ-Q5-EG4" secondAttribute="centerY" id="Hzd-ql-E9E"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.011764705882352941" green="0.14509803921568626" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DHQ-Q5-EG4" secondAttribute="trailing" id="2d5-7g-ah9"/>
+                            <constraint firstItem="CRP-ej-5vC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="85l-W5-QxK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CRP-ej-5vC" secondAttribute="trailing" id="9vG-Fo-3Yd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DHQ-Q5-EG4" secondAttribute="bottom" id="JeM-ar-Dk7"/>
+                            <constraint firstItem="CRP-ej-5vC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LwY-dy-8Hw"/>
+                            <constraint firstItem="DHQ-Q5-EG4" firstAttribute="top" secondItem="CRP-ej-5vC" secondAttribute="bottom" id="NaU-2A-9Vp"/>
+                            <constraint firstItem="DHQ-Q5-EG4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="msW-7H-d0h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="movie_db" width="400" height="400"/>
+    </resources>
+</document>

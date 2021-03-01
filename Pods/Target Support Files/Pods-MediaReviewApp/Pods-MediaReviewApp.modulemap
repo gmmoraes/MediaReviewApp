@@ -1,0 +1,6 @@
+framework module Pods_MediaReviewApp {
+  umbrella header "Pods-MediaReviewApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
