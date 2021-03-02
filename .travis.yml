@@ -35,6 +35,6 @@ language: objective-c
 osx_image: xcode11.1
 xcode_workspace: MediaReviewApp.xcworkspace
 xcode_scheme: MediaReviewApp
-xcode_destination: platform=iOS Simulator,OS=13.1,name=iPhone SE
+xcode_destination: platform=iOS Simulator,OS=13.1,name=iPhone 11
 before_install:
 - pod install
