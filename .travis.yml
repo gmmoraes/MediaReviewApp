@@ -23,7 +23,9 @@
 #       script: Scripts/test.sh -s "Search Doc" -d "OS=12.2,name=iPhone X" -d "OS=11.4,name=iPhone X" -d "OS=10.3.1,name=iPhone SE"
 
 language: objective-c  #1
-osx_image: xcode9.4
+osx_image: xcode13.1
 xcode_workspace: MediaReviewApp.xcworkspace
 xcode_scheme: MediaReviewApp
-#xcode_sdk: iphonesimulator11.4 #5
+#xcode_sdk: iphonesimulator14.2
+
+script: — xcodebuild clean build -workspace MediaReviewApp.xcworkspace -scheme MediaReviewApp -destination “platform=iOS Simulator,name=iPhone X”
