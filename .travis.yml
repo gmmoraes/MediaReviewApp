@@ -3,5 +3,7 @@ language: swift
 os: osx
 xcode_workspace: MediaReviewApp.xcworkspace
 xcode_scheme: MediaReviewApp
-xcode_destination: platform=iOS Simulator,OS=13.1,name=iPhone 8
+xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
+before_install:
+- pod install
 
