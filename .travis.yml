@@ -22,10 +22,19 @@
 #       osx_image: xcode10.3
 #       script: Scripts/test.sh -s "Search Doc" -d "OS=12.2,name=iPhone X" -d "OS=11.4,name=iPhone X" -d "OS=10.3.1,name=iPhone SE"
 
-language: objective-c  #1
-osx_image: xcode13.1
+# language: objective-c  #1
+# osx_image: xcode13.1
+# xcode_workspace: MediaReviewApp.xcworkspace
+# xcode_scheme: MediaReviewApp
+# #xcode_sdk: iphonesimulator14.2
+# xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
+
+#script: — xcodebuild clean build -workspace MediaReviewApp.xcworkspace -scheme MediaReviewApp -destination “platform=iOS Simulator,name=iPhone X”
+
+language: objective-c
+osx_image: xcode11.1
 xcode_workspace: MediaReviewApp.xcworkspace
 xcode_scheme: MediaReviewApp
-#xcode_sdk: iphonesimulator14.2
-
-script: — xcodebuild clean build -workspace MediaReviewApp.xcworkspace -scheme MediaReviewApp -destination “platform=iOS Simulator,name=iPhone X”
+xcode_destination: platform=iOS Simulator,OS=13.1,name=iPhone SE
+before_install:
+- pod install
