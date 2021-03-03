@@ -7,6 +7,7 @@ target 'MediaReviewApp' do
 
   # Pods for MediaReviewApp
   pod 'YouTubePlayer'
+  pod 'SwiftLint'
 
   target 'MediaReviewAppTests' do
     inherit! :search_paths

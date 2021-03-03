@@ -486,7 +486,6 @@ final class DataProvider:TheMovieDbApiRequest,ImageManager {
         return datas
     }
     
-    
     func loadGenre(predicate: NSPredicate? = nil){
         let context = self.persistentContainer.newBackgroundContext() //appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>()

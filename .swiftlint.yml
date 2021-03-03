@@ -1,0 +1,25 @@
+disabled_rules: # rule identifiers to exclude from running
+# - colon
+- comma
+# - control_statement
+- variable_name
+- force_cast
+#- large_tuple
+#- notification_center_detachment
+#- nesting
+#- function_parameter_count
+- trailing_whitespace
+- opening_brace
+- vertical_whitespace
+- type_body_length
+
+
+line_length:
+  warning: 140
+  error: 300
+  ignores_comments: true
+  ignores_urls: true
+
+
+excluded:
+- Pods

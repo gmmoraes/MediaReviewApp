@@ -33,11 +33,11 @@ class FetchingViewModelTests: XCTestCase {
     
     func initStubs(context:NSManagedObjectContext,entityName:String,amountOfData:Int32) {
             
-        func insertMovies(adult: Bool,favorited: Bool,id: Int32,page: Int32,popularity: Double,sortId: Double,title: String?,vote_average: Double,vote_count: Int32 ){
+        func insertMovies(id: Int32,page: Int32,popularity: Double,sortId: Double,title: String?,vote_average: Double,vote_count: Int32 ){
             let obj = NSEntityDescription.insertNewObject(forEntityName: "Movie", into: context)
-            obj.setValue(adult, forKey: "adult")
+            obj.setValue(true, forKey: "adult")
             obj.setValue(title, forKey: "title")
-            obj.setValue(favorited, forKey: "favorited")
+            obj.setValue(false, forKey: "favorited")
             obj.setValue(id, forKey: "id")
             obj.setValue(page, forKey: "page")
             obj.setValue(popularity, forKey: "popularity")
@@ -46,11 +46,11 @@ class FetchingViewModelTests: XCTestCase {
             obj.setValue(vote_count, forKey: "vote_count")
         }
         
-        func insertSeries(name: String?,favorited: Bool,id: Int32,page: Int32,popularity: Double,sortId: Double,vote_average: Double,vote_count: Int32 ){
+        func insertSeries(name: String?,id: Int32,page: Int32,popularity: Double,sortId: Double,vote_average: Double,vote_count: Int32 ){
             let obj = NSEntityDescription.insertNewObject(forEntityName: "Serie", into: context)
             
             obj.setValue(name, forKey: "name")
-            obj.setValue(favorited, forKey: "favorited")
+            obj.setValue(false, forKey: "favorited")
             obj.setValue(id, forKey: "id")
             obj.setValue(page, forKey: "page")
             obj.setValue(popularity, forKey: "popularity")
@@ -68,9 +68,9 @@ class FetchingViewModelTests: XCTestCase {
         
         for n in 0..<amountOfData{
             if entityName == "Movie" {
-                insertMovies(adult: true, favorited: false, id: n, page: n, popularity: Double(n), sortId: Double(n), title: "Movie Test \(n)", vote_average: Double(n), vote_count: n)
+                insertMovies(id: n, page: n, popularity: Double(n), sortId: Double(n), title: "Movie Test \(n)", vote_average: Double(n), vote_count: n)
             }else if entityName == "Serie" {
-                insertSeries(name: "Serie Test \(n)", favorited: false, id: n, page: n, popularity: Double(n), sortId: Double(n), vote_average: Double(n), vote_count: n)
+                insertSeries(name: "Serie Test \(n)", id: n, page: n, popularity: Double(n), sortId: Double(n), vote_average: Double(n), vote_count: n)
                 
             }else if entityName == "Genre" {
                 insertGenre(id: n, name: "Genre \(n)", last_modified: "27/02/2021")
@@ -88,11 +88,17 @@ class FetchingViewModelTests: XCTestCase {
     func flushData(context:NSManagedObjectContext,entityName:String) {
             
         let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let objs = try! context.fetch(fetchRequest)
-        for case let obj as NSManagedObject in objs {
-            context.delete(obj)
+        
+        do {
+            let objs = try context.fetch(fetchRequest)
+            for case let obj as NSManagedObject in objs {
+                context.delete(obj)
+            }
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        try! context.save()
 
     }
     

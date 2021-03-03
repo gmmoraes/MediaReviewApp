@@ -63,8 +63,9 @@ extension Request {
         getRequest.setValue("application/json", forHTTPHeaderField: "Accept")
 
         dataTask(with: getRequest, completionHandler: { (data, response, error) -> Void in
-            completion(data!)
-            
+            if let data = data {
+                completion(data)
+            }
         }).resume()
     }
     

@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-protocol CellDelegate {
+protocol CellDelegate: class {
     func colCategorySelected(_ movies: Movie?, series: Serie?, image: UIImage)
-    func loadMoreData(currentSection:Int)
+    func loadMoreData(currentSection: Int)
 }
 
 class HomeTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var semResultadosLbl: UILabel!
     @IBOutlet weak var semResultadoView: GlassView!
@@ -23,8 +22,8 @@ class HomeTableViewCell: UITableViewCell {
     
     var numberOfCells: Int = 0
     var isLoading = false
-    var tableViewHeight:CGFloat = 0
-    var tableViewWidth:CGFloat = 0
+    var tableViewHeight: CGFloat = 0
+    var tableViewWidth: CGFloat = 0
 
     
     var popularMovies: [Movie] = []{
@@ -34,11 +33,11 @@ class HomeTableViewCell: UITableViewCell {
     }
     var popularSeries: [Serie] = [] {
         didSet {
-          toggleSemResultado(shouldHide:popularSeries.count > 0)
+          toggleSemResultado(shouldHide: popularSeries.count > 0)
         }
     }
     var currentSection: Int = 0
-    var delegate : CellDelegate?
+    weak var delegate: CellDelegate?
     
     
     override func awakeFromNib() {
@@ -103,7 +102,7 @@ extension HomeTableViewCell: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionViewCell", for: indexPath) as! VideoCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionViewCell", for: indexPath) as? VideoCollectionViewCell else {return UICollectionViewCell()}
         
         cell.tag = currentSection
         cell.title.text = currentSection == 0 ? popularMovies[indexPath.row].title : popularSeries[indexPath.row].name

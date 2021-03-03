@@ -117,12 +117,12 @@
 		88183CBB25CED38000490285 /* MediaAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaAdapter.swift; sourceTree = "<group>"; };
 		88183CBC25CED38000490285 /* SafeAreaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaManager.swift; sourceTree = "<group>"; };
 		88183CBF25CED38900490285 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
-		88183CC025CED38900490285 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "../New Group/HomeViewController.swift"; sourceTree = "<group>"; };
+		88183CC025CED38900490285 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		88183CC125CED38900490285 /* SerieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerieViewController.swift; sourceTree = "<group>"; };
 		88183CC225CED38900490285 /* FetchingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchingViewController.swift; sourceTree = "<group>"; };
 		88183CC425CED38900490285 /* MinhaListaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinhaListaViewController.swift; sourceTree = "<group>"; };
-		88183CC525CED38900490285 /* FakeSplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeSplashScreenViewController.swift; path = "../New Group1/FakeSplashScreenViewController.swift"; sourceTree = "<group>"; };
-		88183CC725CED38900490285 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = "../New Group2/DetailsViewController.swift"; sourceTree = "<group>"; };
+		88183CC525CED38900490285 /* FakeSplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSplashScreenViewController.swift; sourceTree = "<group>"; };
+		88183CC725CED38900490285 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		88183CC825CED38900490285 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		88183CC925CED38900490285 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		88183CCB25CED39300490285 /* UITableViewCell+returnParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+returnParent.swift"; sourceTree = "<group>"; };
@@ -460,6 +460,7 @@
 				88183C8F25CED31500490285 /* Frameworks */,
 				88183C9025CED31500490285 /* Resources */,
 				54576DA6DDAB0E132031988E /* [CP] Embed Pods Frameworks */,
+				884CD63725EDEB23008153F3 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -605,6 +606,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediaReviewAppTests/Pods-MediaReviewAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		884CD63725EDEB23008153F3 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		DD8E69502BE63B5F201C990C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
