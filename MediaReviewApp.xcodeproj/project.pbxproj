@@ -87,6 +87,7 @@
 		88A4309925E155A500F4E289 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A4309825E155A500F4E289 /* DetailsCoordinator.swift */; };
 		88A4309B25E155BA00F4E289 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A4309A25E155BA00F4E289 /* BaseCoordinator.swift */; };
 		88A4309D25E155DC00F4E289 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A4309C25E155DC00F4E289 /* MainCoordinator.swift */; };
+		88C0C2F625F0937400490EF9 /* MinhaListaViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0C2F525F0937400490EF9 /* MinhaListaViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		88A4309825E155A500F4E289 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
 		88A4309A25E155BA00F4E289 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		88A4309C25E155DC00F4E289 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		88C0C2F525F0937400490EF9 /* MinhaListaViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinhaListaViewModelTests.swift; sourceTree = "<group>"; };
 		A2C78B3406B9C1DF3FDD35EA /* Pods-MediaReviewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaReviewApp.debug.xcconfig"; path = "Target Support Files/Pods-MediaReviewApp/Pods-MediaReviewApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C74706FFA2190C94EDD03BA9 /* Pods-MediaReviewApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaReviewApp.release.xcconfig"; path = "Target Support Files/Pods-MediaReviewApp/Pods-MediaReviewApp.release.xcconfig"; sourceTree = "<group>"; };
 		EA13A45A5D2DA8E88222733D /* Pods_MediaReviewAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediaReviewAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,12 +277,10 @@
 		88183CAE25CED31700490285 /* MediaReviewAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				88183CAF25CED31700490285 /* MediaReviewAppTests.swift */,
+				884E2A3725EF404F008A7455 /* Services */,
+				884E2A3625EF4029008A7455 /* ViewModel */,
 				88183CB125CED31700490285 /* Info.plist */,
-				8837023F25E2F2210013B7FD /* RequestTests.swift */,
-				8855596825E472C200249053 /* FetchingViewModelTests.swift */,
-				8855596A25E47CE100249053 /* TestCoreDataStack.swift */,
-				88309D1325EC2DF4001C1ED2 /* MockFetchingViewModel.swift */,
+				88183CAF25CED31700490285 /* MediaReviewAppTests.swift */,
 			);
 			path = MediaReviewAppTests;
 			sourceTree = "<group>";
@@ -437,6 +437,25 @@
 				88A4309825E155A500F4E289 /* DetailsCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		884E2A3625EF4029008A7455 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8855596825E472C200249053 /* FetchingViewModelTests.swift */,
+				88C0C2F525F0937400490EF9 /* MinhaListaViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		884E2A3725EF404F008A7455 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8855596A25E47CE100249053 /* TestCoreDataStack.swift */,
+				8837023F25E2F2210013B7FD /* RequestTests.swift */,
+				88309D1325EC2DF4001C1ED2 /* MockFetchingViewModel.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		888F6A9425D059BC00FE9C6A /* Details */ = {
@@ -732,6 +751,7 @@
 			files = (
 				8837024025E2F2210013B7FD /* RequestTests.swift in Sources */,
 				88183CB025CED31700490285 /* MediaReviewAppTests.swift in Sources */,
+				88C0C2F625F0937400490EF9 /* MinhaListaViewModelTests.swift in Sources */,
 				8855596925E472C200249053 /* FetchingViewModelTests.swift in Sources */,
 				8855596B25E47CE100249053 /* TestCoreDataStack.swift in Sources */,
 				88309D1425EC2DF4001C1ED2 /* MockFetchingViewModel.swift in Sources */,

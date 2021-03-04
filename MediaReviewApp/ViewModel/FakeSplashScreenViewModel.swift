@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Network
 
-protocol FakeSplashScreenViewModelDelegate{
+protocol FakeSplashScreenViewModelDelegate:class {
     func goHome()
     func showErrorMsg()
 }
@@ -20,15 +20,14 @@ class FakeSplashScreenViewModel:NSObject,NSFetchedResultsControllerDelegate {
     var movieFetchedResultController: NSFetchedResultsController<NSManagedObject>?
     var serieFetchedResultController: NSFetchedResultsController<NSManagedObject>?
     var genreFetchedResultController: NSFetchedResultsController<NSManagedObject>?
-    //var coreDataStack = CoreDataStack.shared
     var coreDataStack:CoreDataStack = CoreDataStack()
     var networkCheck = NetworkChecker.sharedInstance()
-    var movieDataProvider:DataProvider
-    var serieDataProvider:DataProvider
-    var genreDataProvider:DataProvider
+    var movieDataProvider: DataProvider
+    var serieDataProvider: DataProvider
+    var genreDataProvider: DataProvider
     
-    var shouldGoHome:Bool = false
-    var delegate:FakeSplashScreenViewModelDelegate?
+    var shouldGoHome: Bool = false
+    weak var delegate: FakeSplashScreenViewModelDelegate?
     
     override init() {
         movieDataProvider = DataProvider(persistentContainer: coreDataStack.persistentContainer, configData: coreDataStack.movieConfigData)
@@ -46,10 +45,10 @@ class FakeSplashScreenViewModel:NSObject,NSFetchedResultsControllerDelegate {
         genreDataProvider.getGenres()
     }
     
-    func configureFetchedResultController(entityName:String,dataProvider: DataProvider?) ->NSFetchedResultsController<NSManagedObject>{
+    func configureFetchedResultController(entityName: String,dataProvider: DataProvider?) ->NSFetchedResultsController<NSManagedObject>{
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName:entityName)
         let sortKey = entityName == "Genre" ? "id" : "sortId"
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortKey, ascending:true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortKey, ascending: true)]
         
         fetchRequest.returnsDistinctResults = true
         
@@ -81,7 +80,6 @@ class FakeSplashScreenViewModel:NSObject,NSFetchedResultsControllerDelegate {
     
     func checkIfCanGoHome(){
         
-        //networkCheck
         if networkCheck.currentStatus == .satisfied{
             if self.movieFetchedResultController?.fetchedObjects?.count ?? 0 > 0 && self.serieFetchedResultController?.fetchedObjects?.count ?? 0 > 0 && self.genreFetchedResultController?.fetchedObjects?.count ?? 0 > 0 && self.shouldGoHome == false{
                 self.shouldGoHome = true
@@ -94,7 +92,7 @@ class FakeSplashScreenViewModel:NSObject,NSFetchedResultsControllerDelegate {
     }
 }
 
-extension FakeSplashScreenViewModel:NetworkCheckObserver {
+extension FakeSplashScreenViewModel: NetworkCheckObserver {
     func statusDidChange(status: NWPath.Status) {
        self.checkIfCanGoHome()
     }

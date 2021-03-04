@@ -9,20 +9,20 @@
 import Foundation
 import CoreData
 
-protocol MinhaListaViewModelDelegate{
+protocol MinhaListaViewModelDelegate: class{
     func reloadData()
 }
 
 class MinhaListaViewModel:NSObject,NSFetchedResultsControllerDelegate {
     
     var coreDataStack = CoreDataStack()
-    var dataProvider:DataProvider?
-    var serieDataProvider:DataProvider?
+    var dataProvider: DataProvider?
+    var serieDataProvider: DataProvider?
     var movieFetchedResultsController: NSFetchedResultsController<NSManagedObject>?
     var serieFetchedResultsController: NSFetchedResultsController<NSManagedObject>?
     var medias:[Data] = []
-    var delegate:MinhaListaViewModelDelegate?
-    private var changesPending:Bool = false
+    weak var delegate: MinhaListaViewModelDelegate?
+    private var changesPending: Bool = false
     
     override init() {
         super.init()
@@ -54,7 +54,7 @@ class MinhaListaViewModel:NSObject,NSFetchedResultsControllerDelegate {
         delegate?.reloadData()
     }
     
-    private func modifyData(anObject:Any,addition:Bool) {
+    private func modifyData(anObject: Any,addition: Bool) {
         var newImg: Data?
         if let obj = anObject as? Serie {
             if let img = obj.img {
@@ -122,7 +122,7 @@ extension MinhaListaViewModel {
     }
     
     
-    func getImageDataFromIndexPath(indexPath:IndexPath) -> Data {
+    func getImageDataFromIndexPath(indexPath: IndexPath) -> Data {
         return medias[indexPath.row]
     }
     

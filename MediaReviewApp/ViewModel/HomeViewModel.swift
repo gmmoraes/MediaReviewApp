@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 
 
-class HomeViewModel:NSObject,NSFetchedResultsControllerDelegate {
+class HomeViewModel: NSObject,NSFetchedResultsControllerDelegate {
     
     var coreDataStack = CoreDataStack()
-    var dataProvider:DataProvider?
+    var dataProvider: DataProvider?
     lazy var fetchedResultsController: NSFetchedResultsController<NSManagedObject> = {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName:"Genre")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending:true)]
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Genre")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: dataProvider!.viewContext,
@@ -45,7 +45,7 @@ class HomeViewModel:NSObject,NSFetchedResultsControllerDelegate {
 }
 
 
-extension HomeViewModel:DataProviderDataSyncDelegate {
+extension HomeViewModel: DataProviderDataSyncDelegate {
     
     func dataSyncEnded() {
         if let genres = fetchedResultsController.fetchedObjects as? [Genre] {

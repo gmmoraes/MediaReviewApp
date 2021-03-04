@@ -9,26 +9,26 @@
 import Foundation
 import CoreData
 
-protocol FetchingViewModelDelegate {
-    func insetItems(indexPath:IndexPath)
+protocol FetchingViewModelDelegate: class {
+    func insetItems(indexPath: IndexPath)
     func performUpdate()
     func filter()
 }
 
-class FetchingViewModel:NSObject {
+class FetchingViewModel: NSObject {
     
     private var blockOperation = BlockOperation()
     var fetchedResultController: NSFetchedResultsController<NSManagedObject>?
     var filterfetchedResultController: NSFetchedResultsController<NSManagedObject>?
     var coreDataStack = CoreDataStack()
-    var entityName:String = ""
-    var dataProvider:DataProvider?
-    var activeFilter:Bool = false
-    var currentAdaptedVC:MediaAdapter?
-    var delegate:FetchingViewModelDelegate?
-    var type:MediaType
+    var entityName: String = ""
+    var dataProvider: DataProvider?
+    var activeFilter: Bool = false
+    var currentAdaptedVC: MediaAdapter?
+    weak var delegate: FetchingViewModelDelegate?
+    var type: MediaType
     
-    init(type:MediaType) {
+    init(type: MediaType) {
         self.type = type
         super.init()
         if type == .movies {
@@ -41,12 +41,12 @@ class FetchingViewModel:NSObject {
         fetchedResultController = configureFetchedResultController(entityName: entityName)
         currentAdaptedVC = MediaAdapter(type: type,dataProvider: dataProvider!)
         
-        convertData(){_ in }
+        convertData(){_ in}
     }
     
-    func configureFetchedResultController(entityName:String,predicate:NSPredicate? = nil) ->NSFetchedResultsController<NSManagedObject>{
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName:entityName)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sortId", ascending:true)]
+    func configureFetchedResultController(entityName: String,predicate: NSPredicate? = nil) ->NSFetchedResultsController<NSManagedObject>{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sortId", ascending: true)]
         fetchRequest.returnsDistinctResults = true
         if let predicate = predicate {
             fetchRequest.predicate = predicate
@@ -73,15 +73,14 @@ class FetchingViewModel:NSObject {
     
     func loadMoreData() {
         if !(self.dataProvider?.isLoading ?? false) {
-            //self.dataProvider?.isLoading = true
             self.currentAdaptedVC?.getData()
         }
     }
     
-    func filterData(userInfo: [AnyHashable : Any]){
-        var titlePredicate:NSPredicate?
-        var trailerPredicate:NSPredicate?
-        var activePredicates:[NSPredicate] = []
+    func filterData(userInfo: [AnyHashable: Any]){
+        var titlePredicate: NSPredicate?
+        var trailerPredicate: NSPredicate?
+        var activePredicates: [NSPredicate] = []
         
         
         if let filterTrailer = userInfo["trailer"] as? Bool, filterTrailer == true {
@@ -102,7 +101,6 @@ class FetchingViewModel:NSObject {
             let predicateCompound = NSCompoundPredicate(type: .and, subpredicates: activePredicates)
             activeFilter = true
             
-            //guard let insertedData = currentAdaptedVC?.loadMedia(withPredicates: predicateCompound) else {return}
             fetchedResultController?.fetchRequest.predicate = predicateCompound
 
             do {
@@ -133,9 +131,9 @@ class FetchingViewModel:NSObject {
             }
         }
     }
-    func convertData(completion: @escaping(NSFetchedResultsChangeType) -> ()){
-        let type:NSFetchedResultsChangeType = .insert
-        if let insertedData = currentAdaptedVC?.convertData(fetchedObjects:fetchedResultController?.fetchedObjects) {
+    func convertData(completion: @escaping(NSFetchedResultsChangeType) -> Void){
+        let type: NSFetchedResultsChangeType = .insert
+        if let insertedData = currentAdaptedVC?.convertData(fetchedObjects: fetchedResultController?.fetchedObjects) {
             self.currentAdaptedVC?.mediaDataList = insertedData
         }
         
@@ -143,7 +141,7 @@ class FetchingViewModel:NSObject {
     }
     
 }
-extension FetchingViewModel:NSFetchedResultsControllerDelegate{
+extension FetchingViewModel: NSFetchedResultsControllerDelegate{
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         blockOperation = BlockOperation()

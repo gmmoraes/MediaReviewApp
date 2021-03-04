@@ -12,10 +12,12 @@ disabled_rules: # rule identifiers to exclude from running
 - opening_brace
 - vertical_whitespace
 - type_body_length
+- statement_position
+- empty_parentheses_with_trailing_closure
 
 
 line_length:
-  warning: 140
+  warning: 240
   error: 300
   ignores_comments: true
   ignores_urls: true

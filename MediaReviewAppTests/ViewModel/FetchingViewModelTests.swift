@@ -149,14 +149,13 @@ class FetchingViewModelTests: XCTestCase {
     func test_fetch_filtered_Movie(){
         let (_,sut) = configMedia(mediaType: .movies)
         let viewModel = MockFetchingViewModel(type: .movies, dt: sut, coreDataStack: coreDataStack)
-        let fakeFilter = FakeFilter()
-        let _ = ViewModelManager(viewModel: viewModel,notificationCenter: self.notificationCenter)
+        let viewModelManager = ViewModelManager(viewModel: viewModel,notificationCenter: self.notificationCenter)
         let notificationExpectation = XCTNSNotificationExpectation(name: Notification.Name("FilterEnded"),
                                                                    object: nil,
                                                                    notificationCenter: notificationCenter)
         
         
-        fakeFilter.notifyPredicate(key: "searchText", val: "Movie Test 0")
+        viewModelManager.fakeFilter.notifyPredicate(key: "searchText", val: "Movie Test 0")
         
         
         wait(for: [notificationExpectation], timeout: 0.1)
@@ -165,14 +164,13 @@ class FetchingViewModelTests: XCTestCase {
     func test_fetch_filtered_Serie(){
         let (_,sut) = configMedia(mediaType: .series)
         let viewModel = MockFetchingViewModel(type: .series, dt: sut, coreDataStack: coreDataStack)
-        let fakeFilter = FakeFilter()
-        let _ = ViewModelManager(viewModel: viewModel,notificationCenter: self.notificationCenter)
+        let viewModelManager = ViewModelManager(viewModel: viewModel,notificationCenter: self.notificationCenter)
         let notificationExpectation = XCTNSNotificationExpectation(name: Notification.Name("FilterEnded"),
                                                                    object: nil,
                                                                    notificationCenter: notificationCenter)
         
         
-        fakeFilter.notifyPredicate(key: "searchText", val: "Serie Test 0")
+        viewModelManager.fakeFilter.notifyPredicate(key: "searchText", val: "Serie Test 0")
         
         
         wait(for: [notificationExpectation], timeout: 0.1)
